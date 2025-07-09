@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mood & Wellness Checker 😊</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sky: #87ceeb;
+      --sky-light: #e0f7ff;
+      --sky-dark: #007acc;
+      --white: #ffffff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Poppins", sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--sky-light) 0%, var(--white) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 2rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      padding: 3rem 4rem;
+      max-width: 480px;
+      width: 100%;
+    }
+    h1 {
+      font-size: 2rem;
+      color: var(--sky-dark);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .section {
+      margin-bottom: 2rem;
+    }
+    .question {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      color: var(--sky-dark);
+    }
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .option {
+      background: var(--sky-light);
+      padding: 0.75rem 1rem;
+      border-radius: 1rem;
+      cursor: pointer;
+      font-size: 1.1rem;
+      border: 2px solid transparent;
+      transition: background 0.3s, border 0.3s;
+    }
+    .option:hover {
+      background: #d0e8ff;
+    }
+    .option.selected {
+      border-color: var(--sky-dark);
+      background: #cce4ff;
+    }
+    .result {
+      margin-top: 1rem;
+      min-height: 1.5rem;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--sky-dark);
+    }
+    /* Overall summary */
+    #overall-result {
+      margin-top: 2.5rem;
+      background: var(--sky-light);
+      border-left: 4px solid var(--sky-dark);
+      border-radius: 1rem;
+      padding: 1rem 1.25rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--sky-dark);
+      text-align: center;
+      min-height: 2.2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Mood & Wellness Checker 🌈</h1>
+
+    <!-- Mood Question -->
+    <div class="section" id="mood-section">
+      <div class="question">1. How are you feeling today? 🤔</div>
+      <div class="options">
+        <div class="option" data-message="Great to hear you're feeling happy! Keep smiling 😊">😊 Happy</div>
+        <div class="option" data-message="Your excitement is contagious! Enjoy the good vibes 🤩">🤩 Excited</div>
+        <div class="option" data-message="Staying calm is wonderful. Embrace the peace 😌">😌 Calm</div>
+        <div class="option" data-message="Feeling neutral is totally okay. Wishing you a balanced day 😐">😐 Neutral</div>
+        <div class="option" data-message="Sorry you're feeling sad. Remember, it's okay to reach out for support ❤️">😞 Sad</div>
+        <div class="option" data-message="Take a deep breath. You've got this. Maybe try a quick break or stretch 💪">😫 Stressed</div>
+      </div>
+      <div class="result"></div>
+    </div>
+
+    <!-- Stress Question -->
+    <div class="section" id="stress-section">
+      <div class="question">2. How stressed are you right now? 😰</div>
+      <div class="options">
+        <div class="option" data-message="So glad you're feeling relaxed! Keep it up 😌">😌 Relaxed</div>
+        <div class="option" data-message="Good that stress is manageable. Stay mindful 🙂">🙂 Manageable</div>
+        <div class="option" data-message="High stress detected. Consider a short break or breathing exercise 💆‍♂️">😰 High</div>
+        <div class="option" data-message="Feeling overwhelmed can be tough. Maybe talk to a friend or professional 😱">😱 Overwhelmed</div>
+      </div>
+      <div class="result"></div>
+    </div>
+
+    <!-- Energy Question -->
+    <div class="section" id="energy-section">
+      <div class="question">3. How energetic do you feel? ⚡</div>
+      <div class="options">
+        <div class="option" data-message="You seem tired. Perhaps some rest or a short walk will help 🥱">🥱 Tired</div>
+        <div class="option" data-message="Balanced energy is great. Keep it steady 😐">😐 Okay</div>
+        <div class="option" data-message="Wow, you're full of energy! Channel it positively 💪">💪 Energetic</div>
+      </div>
+      <div class="result"></div>
+    </div>
+
+    <!-- Overall Result -->
+    <div id="overall-result"></div>
+  </div>
+
+  <script>
+    const selections = {};
+
+    /** Classify option text into categories */
+    function getMoodCategory(text) {
+      if (text.includes('Happy') || text.includes('Excited')) return 'positive';
+      if (text.includes('Sad') || text.includes('Stressed')) return 'negative';
+      return 'neutral';
+    }
+    function getStressLevel(text) {
+      if (text.includes('Relaxed') || text.includes('Manageable')) return 'low';
+      if (text.includes('High') || text.includes('Overwhelmed')) return 'high';
+      return 'low'; // default manageable
+    }
+    function getEnergyLevel(text) {
+      if (text.includes('Energetic')) return 'high';
+      if (text.includes('Okay')) return 'medium';
+      return 'low'; // tired
+    }
+
+    /** Compute overall mood once all questions answered */
+    function computeOverall() {
+      if (Object.keys(selections).length !== 3) {
+        document.getElementById('overall-result').textContent = '';
+        return;
+      }
+      const moodCat = getMoodCategory(selections['mood-section']);
+      const stressCat = getStressLevel(selections['stress-section']);
+      const energyCat = getEnergyLevel(selections['energy-section']);
+
+      let summary = '';
+      if (moodCat === 'positive' && stressCat === 'low' && energyCat === 'high') {
+        summary = 'You are on fire today! Positive, calm & energetic 💖🎉';
+      } else if (moodCat === 'positive' && (stressCat === 'high' || energyCat !== 'high')) {
+        summary = 'Good vibes overall, but watch that stress/energy balance ✨';
+      } else if (moodCat === 'neutral' && stressCat === 'low' && energyCat === 'medium') {
+        summary = 'Steady and balanced day 🙂';
+      } else if (moodCat === 'negative' && stressCat === 'high') {
+        summary = 'It seems like a tough day. Be gentle with yourself and seek support if needed 💙';
+      } else if (moodCat === 'negative') {
+        summary = 'Feeling down but not too stressed. A bit of self‑care might help 🫂';
+      } else {
+        summary = 'Mixed feelings today. Stay mindful and take breaks when you can 🤗';
+      }
+
+      document.getElementById('overall-result').textContent = summary;
+    }
+
+    // Attach click handlers to each option in every section
+    document.querySelectorAll('.section').forEach(section => {
+      const options = section.querySelectorAll('.option');
+      const resultEl = section.querySelector('.result');
+
+      options.forEach(opt => {
+        opt.addEventListener('click', () => {
+          // remove previous selection in this section
+          options.forEach(o => o.classList.remove('selected'));
+          opt.classList.add('selected');
+
+          // store selection and show individual feedback
+          selections[section.id] = opt.textContent.trim();
+          resultEl.textContent = opt.dataset.message || '';
+
+          // compute overall mood
+          computeOverall();
+        });
+      });
+    });
+  </script>
+</body>
+</html>

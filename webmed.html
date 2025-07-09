@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manasya(key to calm mind)</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom, #e1f5fe, #f3e5f5);
+      color: #333;
+    }
+    header {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      text-align: center;
+      backdrop-filter: blur(5px);
+      position: sticky;
+      top: 0;
+    }
+    header h1 {
+      margin: 0;
+      color: #6a1b9a;
+      font-size: 2em;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #4e342e;
+      font-weight: 600;
+    }
+    .hero {
+      display: flex;
+      text-decoration: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: url('')center/cover;
+      height: 80vh;
+      text-align: center;
+      color: #6a1b9a;
+      padding: 0 20px;
+    }
+    .hero h2 {
+      font-size: 3em;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    }
+    .hero p {
+      font-size: 1.2em;
+      max-width: 600px;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    }
+    .my-chatbot-button {
+  background: linear-gradient(90deg, lavender, lightblue, white);
+  color: #333;
+  padding: 12px 24px;
+  text-decoration:none;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.my-chatbot-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+}
+
+.my-chatbot-button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px; /* adjust as needed */
+}
+    .content {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+    }
+    .content h3 {
+      color: #6a1b9a;
+      margin-bottom: 20px;
+      font-size: 2em;
+    }
+    .inspire-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .card {
+      background: rgba(255,255,255,0.9);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+    .card p {
+      font-size: 1em;
+    }
+
+    footer {
+      background-color: rgba(255, 255, 255, 0.8);
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #4e342e;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Manasya</h1>
+  <nav>
+    <a href="#">Home</a>
+    <a href="file:///C:/Users/praja/OneDrive/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88/videos.html">Resources</a>
+    <a href="file:///C:/Users/praja/OneDrive/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88/psychologist.html">Chat Support</a>
+    <a href="#">About us</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>Welcome to Manasya! 🌸</h2>
+  <p>A calm corner on the internet where you can breathe, feel supported, and take your first step towards healing.</p>
+  <p> 
+
+We’re glad you’re here to meet Manasya Bot, your friendly companion created to listen, support, and walk with you through every thought and feeling.
+
+Before you dive in, take a moment for a quick <a href="file:///C:/Users/praja/Downloads/mansaya%20Q-A.html">mental health check </a>— because your well-being truly matters.
+
+Explore our Resources section, thoughtfully curated with self-help videos and inspiring books to guide and uplift you. And if you’d like, you can also reach out for Chat Support to connect directly with our renowned psychologists for professional help.</p>
+</section>
+<div class="button-container">
+  <a href="file:///C:/Users/praja/OneDrive/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88/chatbotnew.html" >
+<button class="my-chatbot-button" onclick="openPopup()">Chat with Manasya Bot</button></a>
+<a href="file:///C:/Users/praja/OneDrive/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88/mood.html">
+<button class="my-chatbot-button" onclick="checkmood()">Check your mood today</button></a></button></div>
+<section class="content">
+  <h3>Inspiration & Hope</h3>
+  <div class="inspire-grid">
+    <div class="card">
+      <img src="c:\Users\praja\Downloads\peter-thomas-AuVYd7aR5a4-unsplash.jpg" alt="Peaceful nature">
+      <p>"Every storm passes. Peace is waiting."</p>
+    </div>
+    <div class="card">
+      <img src="c:\Users\praja\Downloads\marek-piwnicki-X-7-aE8DeKA-unsplash.jpg" alt="Sunrise over mountains">
+      <p>"You are not alone on this journey."</p>
+    </div>
+    <div class="card">
+      <img src="c:\Users\praja\Downloads\melodie-brossard-GVPv-Nr_CYc-unsplash.jpg" alt="Calm lake">
+      <p>"One small step today can bring a brighter tomorrow."</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 Manasya | Designed with care 💜
+</footer>
+
+</body>
+</html>

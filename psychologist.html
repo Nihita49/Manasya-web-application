@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manasya's Psychologists 🧠</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --calm-blue: #e8f5ff;
+      --calm-green: #dff8ef;
+      --accent: #5c9ead;
+      --white: #ffffff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Poppins", sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(120deg, var(--calm-blue) 0%, var(--calm-green) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 960px;
+      width: 100%;
+    }
+    h1 {
+      font-size: 2.2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--accent);
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: var(--white);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+      transition: transform 0.25s;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+    }
+    .name {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+    .speciality {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .location {
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+    .contact {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .contact span {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Manasya's Psychologists &amp; Counsellors 📇</h1>
+    <div class="cards">
+      <!-- Card 1 -->
+      <div class="card">
+        <div class="name">Dr. Anjali Chhabria</div>
+        <div class="speciality">Clinical Psychologist &amp; Author</div>
+        <div class="location">📍 Mumbai, Maharashtra</div>
+        <div class="contact">
+          <span>📞 +91‑22‑1234 5678</span>
+          <span>✉️ dranjali@example.com</span>
+          <span>🌐 <a href="https://mindtemple.com" target="_blank" rel="noopener">mindtemple.com</a></span>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="card">
+        <div class="name">Dr. Samir Parikh</div>
+        <div class="speciality">Psychiatrist &amp; Mental Health Expert</div>
+        <div class="location">📍 New Delhi</div>
+        <div class="contact">
+          <span>📞 +91‑11‑2345 6789</span>
+          <span>✉️ drsamir@example.com</span>
+          <span>🌐 <a href="https://mentalhealthfirst.com" target="_blank" rel="noopener">mentalhealthfirst.com</a></span>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="card">
+        <div class="name">Dr. Meghna Singhal</div>
+        <div class="speciality">Child &amp; Adolescent Psychologist</div>
+        <div class="location">📍 Bengaluru, Karnataka</div>
+        <div class="contact">
+          <span>📞 +91‑80‑3456 7890</span>
+          <span>✉️ drmeghna@example.com</span>
+          <span>🌐 <a href="https://wellmindclinic.in" target="_blank" rel="noopener">wellmindclinic.in</a></span>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="card">
+        <div class="name">Dr. Radhika Kapoor</div>
+        <div class="speciality">Relationship &amp; Couples Therapist</div>
+        <div class="location">📍 Jaipur, Rajasthan</div>
+        <div class="contact">
+          <span>📞 +91‑141‑456 7890</span>
+          <span>✉️ drradhika@example.com</span>
+          <span>🌐 <a href="https://heartsync.in" target="_blank" rel="noopener">heartsync.in</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
