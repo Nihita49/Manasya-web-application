@@ -1,0 +1,165 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mental Health Self-Check</title>
+  <style>
+    :root {
+      --sky: #87ceeb;
+      --sky-light: #e0f7ff;
+      --sky-dark: #007acc;
+      --white: #ffffff;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--sky-light);
+      color: #333;
+      padding: 40px;
+      max-width: 700px;
+      margin: auto;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: var(--sky-dark);
+      text-align: center;
+    }
+
+    .question {
+      margin-bottom: 20px;
+      background-color: var(--white);
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid var(--sky);
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: var(--sky-dark);
+      color: var(--white);
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
+      display: block;
+      margin: 30px auto 10px;
+    }
+
+    button:hover {
+      background-color: var(--sky);
+    }
+
+    #result {
+      margin-top: 30px;
+      font-weight: bold;
+      font-size: 18px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Mental Health Self-Check</h2>
+
+  <form id="quizForm">
+
+    <div class="question">
+      <label>1. Have you felt very sad or down in the last few days?</label><br>
+      <input type="radio" name="q1" value="yes"> Yes
+      <input type="radio" name="q1" value="no"> No
+    </div>
+
+    <div class="question">
+      <label>2. Do you often feel anxious or overwhelmed?</label><br>
+      <input type="radio" name="q2" value="yes"> Yes
+      <input type="radio" name="q2" value="no"> No
+    </div>
+
+    <div class="question">
+      <label>3. Do you have trouble sleeping or relaxing?</label><br>
+      <input type="radio" name="q3" value="yes"> Yes
+      <input type="radio" name="q3" value="no"> No
+    </div>
+
+    <div class="question">
+      <label>4. Do you feel motivated and interested in daily activities?</label><br>
+      <input type="radio" name="q4" value="yes"> Yes
+      <input type="radio" name="q4" value="no"> No
+    </div>
+
+    <div class="question">
+      <label>5. Are you eating much more or less than usual?</label><br>
+      <input type="radio" name="q5" value="yes"> Yes
+      <input type="radio" name="q5" value="no"> No
+    </div>
+
+    <div class="question">
+      <label>6. Have you lost interest in hobbies or things you enjoy?</label><br>
+      <input type="radio" name="q6" value="yes"> Yes
+      <input type="radio" name="q6" value="no"> No
+    </div>
+
+    <div class="question">
+      <label>7. Do you feel lonely or disconnected from others?</label><br>
+      <input type="radio" name="q7" value="yes"> Yes
+      <input type="radio" name="q7" value="no"> No
+    </div>
+
+    <div class="question">
+      <label>8. Do you feel tired even after a full night’s sleep?</label><br>
+      <input type="radio" name="q8" value="yes"> Yes
+      <input type="radio" name="q8" value="no"> No
+    </div>
+
+    <div class="question">
+      <label>9. Have you experienced sudden mood swings recently?</label><br>
+      <input type="radio" name="q9" value="yes"> Yes
+      <input type="radio" name="q9" value="no"> No
+    </div>
+
+    <div class="question">
+      <label>10. Do you find it hard to focus or concentrate?</label><br>
+      <input type="radio" name="q10" value="yes"> Yes
+      <input type="radio" name="q10" value="no"> No
+    </div>
+
+    <button type="button" onclick="checkStatus()">Submit</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    function checkStatus() {
+      const form = document.forms['quizForm'];
+      let score = 0;
+
+      for (let i = 1; i <= 10; i++) {
+        const answer = form['q' + i].value;
+        if ((i !== 4 && answer === "yes") || (i === 4 && answer === "no")) {
+          score++;
+        }
+      }
+
+      let message = "";
+
+      if (score <= 2) {
+        message = "✅ You're doing well. Keep taking care of yourself!";
+      } else if (score <= 5) {
+        message = "😐 You may be experiencing mild stress. Try to relax and rest.";
+      } else if (score <= 8) {
+        message = "⚠️ Moderate signs of distress. Consider speaking with someone you trust.";
+      } else {
+        message = "🚨 You're showing strong signs of emotional strain. Please seek support from a mental health professional.";
+      }
+
+      document.getElementById("result").innerText = message;
+    }
+  </script>
+
+</body>
+</html>
